@@ -11,7 +11,7 @@ services:
     volumes:
       - ${appdata}/homer:/www/assets
     ports:
-      - ${homer_port}:8080
+      - 8080:8080
     restart: unless-stopped
     networks:
       - dockernet
