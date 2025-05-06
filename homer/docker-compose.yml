@@ -18,4 +18,4 @@ services:
 
 networks:
   dockernet:
-    external: true
+    external: false
