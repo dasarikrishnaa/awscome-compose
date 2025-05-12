@@ -3,7 +3,7 @@ version: '3'
 services:
   homer:
 #    image: b4bz/homer:22.02.1  ## added version number due to regression
-    image: b4bz/homer:22.02.1
+    image: dasari97/api-new:1.0-alpine
     container_name: homer
     environment:
      - PUID=${PUID}
