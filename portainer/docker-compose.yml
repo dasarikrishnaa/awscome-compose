@@ -12,7 +12,14 @@ services:
       - portainer_data:/data
     networks:
       - network
-
+  agent:
+    image: portainer/agent:lts
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    networks:
+      - network
+      
 networks:
   network:
     driver: bridge
