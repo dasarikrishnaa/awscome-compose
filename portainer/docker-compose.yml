@@ -2,22 +2,20 @@ version: "3"
 
 services:
   portainer:
-    image: portainer/portainer-ee:latest
-    container_name: portainer
-    #hostname: ${HOSTNAME}
-
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ${appdata}/portainer:/data portainer/portainer-ce
-      - ${appdata}/portainer_data:/data
+    image: portainer/portainer-ce:lts
+    command: -H tcp://agent:9001 --tlsskipverify
     ports:
-      - ${portainer_http_port}:9000
-      - ${portainer_https_port}:9443
-      - ${portainer_port}:8000
-    restart: unless-stopped
+      - "9443:9443"
+      - "9000:9000"
+      - "8000:8000"
+    volumes:
+      - portainer_data:/data
     networks:
-      - dockernet
+      - network
 
 networks:
-  dockernet:
-    external: true
+  network:
+    driver: bridge
+
+volumes:
+  portainer_data:
