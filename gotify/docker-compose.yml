@@ -5,7 +5,7 @@ services:
     image: gotify/server
     restart: unless-stopped
     ports:
-      - ${gotify_port}:80
+      - 8011:80
     environment:
       - GOTIFY_DEFAULTUSER_PASS=user
     volumes:
